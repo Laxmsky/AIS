@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Формы передачи</title>
+    <style>
+        .button {
+			background-color: #FF4500;
+			height: 63px;
+			width: 408px;
+			border: 2px solid black;
+			padding: 15px 20px;
+			text-align: center;
+			font-size: 25px;
+			margin: 5px 0px;
+		}
+        body {
+            background:  #FF7F50 ;
+            padding: 10px;
+            background-repeat: no-repeat;
+			font-size: 25px;
+            }
+			
+		h1{
+			
+			border: 4px solid black;
+			background: #FF4500;
+			padding: 15px 20px;
+			text-align: center;
+			font-size: 60px;
+		}
+	
+		.table{
+			border: 4px solid black;
+			width: 100%
+		}
+    </style>
+</head>
+<body>
+<div id="header" >
+        <h1 align="center">Формы передачи</h1>
+        <h3 align="center"><a href = "{% url 'home' %}"><button class = 'button'>назад</button></a></h3>
+</div>
+<table  align="center">
+    <tr>
+        <th align="center" width="50%">
+    <form method="POST" action="addr/">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+        <input class = "button" type="submit" value="Добавить форму передачи">
+    </form>
+    <br>
+    <br>
+    <form method="POST" action="delr/">
+        {% csrf_token %}
+        <label>Введите id</label>
+        <input class = "myfield" type= "number" name="delname"><br>
+        <input class = "button" type= "submit" value="Удалить форму передачи">
+    </form>
+    <br>
+    <br>
+    <form method="POST" action="upr/">
+        {% csrf_token %}
+        <label>Введите id</label>
+        <input class = "myfield" type= "number" name="upname"><br>
+        <table>
+            {{ form }}
+        </table>
+        <input class = "button" type= "submit" value="Изменить форму передачи">
+    </form>
+</table>
+    <tr>
+        <th align="center" width="50%">
+        <h1 align="center"> Список Форм передачи</h1>
+	<table  align="center">
+    <tr>
+    <form method="POST" action="show/">
+        {% csrf_token %}
+        <table class='table'>
+            <tr class='table' align="center" bgcolor="#FF4500">
+                <th>Id</th>
+                <th>Дата передачи</th>
+				<th>Номер комнаты</th>
+                <th>id Материально ответственного лица</th>
+                <th>Инвентарный номер</th>
+            </tr>
+        {% for i in data_show %}
+            <tr align="center">
+                <td>{{ i.id }}</td>
+                <td>{{ i.date_of_transfer }}</td>
+                <td>{{ i.number_of_the_room }}</td>
+                <td> <a href="{% url 'materially_responsible_person' %}"> {{ i.mater}} </td>
+				<td> <a href="{% url 'equipment' %}"> {{ i.inventory_number}} </td>
+            </tr>
+        {% endfor %}
+        </table>
+    </form>
+</th>
+    </tr>
+</table>
+</body>
+</html>

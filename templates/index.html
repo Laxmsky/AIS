@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Hello Django</title>
+    <style>
+	
+	.button {
+        background-color: #FF4500;
+		height: 63px;
+		width: 608px;
+        border: 2px solid black;
+        padding: 15px 20px;
+        text-align: center;
+        font-size: 25px;
+    }
+    body {
+		background:  #FF7F50  ;
+	}
+	h1{
+			
+			border: 4px solid black;
+			background: #FF4500;
+			padding: 15px 20px;
+			text-align: center;
+			font-size: 60px;
+
+		}
+    </style>
+</head>
+<body>
+    <h1 align="center">Главная страница</h1>
+    <p align="center"><a href = "{% url 'Head_of_division' %}"><button class = 'button'> Руководитель дивизии</button></a></p>
+    <p align="center"><a href = "{% url 'division' %}"><button class = 'button'> Дивизии</button></a></p>
+    <p align="center"><a href = "{% url 'member_of_the_division' %}"><button class = 'button'> Члены девизии</button></a></p>
+    <p align="center"><a href = "{% url 'materially_responsible_person' %}"><button class = 'button'> Материально ответственные лица</button></a></p>
+    <p align="center"><a href = "{% url 'transfer_form' %}"><button class = 'button'> Формы передачи</button></a></p>
+    <p align="center"><a href = "{% url 'equipment' %}"><button class = 'button'> Оборудование</button></a></p>
+    <p align="center"><a href="/admin/logout/"><button class = 'button'> Выйти из аккаунта</button></a></p>
+
+</body>
+</html>
+

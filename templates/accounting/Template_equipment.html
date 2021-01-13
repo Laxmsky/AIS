@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Оборудование</title>
+        <style>
+        .button {
+			background-color: #FF4500;
+			height: 63px;
+			width: 408px;
+			border: 2px solid black;
+			padding: 15px 20px;
+			text-align: center;
+			font-size: 25px;
+			margin: 5px 0px;
+		}
+        body {
+            background:  #FF7F50 ;
+            padding: 10px;
+            background-repeat: no-repeat;
+			font-size: 25px;
+            }
+			
+		h1{
+			
+			border: 4px solid black;
+			background: #FF4500;
+			padding: 15px 20px;
+			text-align: center;
+			font-size: 60px;
+		}
+	
+		.table{
+			border: 4px solid black;
+			width: 100%
+		}
+    </style>
+</head>
+<body>
+<div id="header" >
+        <h1 align="center">Оборудование</h1>
+        <h3 align="center"><a href = "{% url 'home' %}"><button class = 'button'>назад</button></a></h3>
+</div>
+
+<table align="center">
+    <tr>
+        <th align="center" width="50%">
+    <form method="POST" action="adde/">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+        <input class = "button" type="submit" value="Добавить Оборудование">
+    </form>
+    <br>
+    <br>
+    <form method="POST" action="dele/">
+        {% csrf_token %}
+        <label>id</label>
+        <input class = "myfield" type= "number" name="delname"><br>
+        <input class = "button" type= "submit" value="Удалить Оборудование">
+    </form>
+    <br>
+    <br>
+    <form method="POST" action="upe/">
+        {% csrf_token %}
+        <label>id</label>
+        <input class="myfield" type= "number" name="upname"><br>
+        <table>
+            {{ form }}
+        </table>
+        <input class = "button" type= "submit" value="Изменить Оборудование">
+    </form>
+</table>
+
+    <tr>
+        <th align="center" width="50%">
+        <h1 align="center"> Список Оборудование</h1>
+     <table align="center">
+    <form method="POST" action="show/">
+        {% csrf_token %}
+        <table class='table'>
+            <tr align="center" bgcolor="#FF4500">
+                <th>Id</th>
+                <th>Название</th>
+                <th>Дата приобретения</th>
+				<th>Цена</th>
+            </tr>
+        {% for i in data_show %}
+            <tr align="center">
+                <td>{{ i.id }}</td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.acquisition_date }}</td>
+				<td>{{ i.cost }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </form>
+</th>
+    </tr>
+</table>
+</body>
+</html>

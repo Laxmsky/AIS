@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <title>Руководители дивизий</title>
+    <style>
+        .button {
+			background-color: #FF4500;
+			height: 63px;
+			width: 408px;
+			border: 2px solid black;
+			padding: 15px 20px;
+			text-align: center;
+			font-size: 25px;
+			margin: 5px 0px;
+		}
+        body {
+            background:  #FF7F50 ;
+            padding: 10px;
+            background-repeat: no-repeat;
+			font-size: 25px;
+            }
+			
+		h1{
+			
+			border: 4px solid black;
+			background: #FF4500;
+			padding: 15px 20px;
+			text-align: center;
+			font-size: 60px;
+		}
+	
+		.table{
+			border: 4px solid black;
+			width: 100%
+		}
+    </style>
+</head>
+<body class="container">
+    <div id="header" >
+
+        <h1 align="center">Руководители дивизий</h1>
+        <h3 align="center"><a href = "{% url 'home' %}"><button class = 'button'>назад</button></a></h3>
+    </div>
+
+<table align="center">
+    <tr>
+        <th align="center" width="50%">
+    <form method="POST" action="add/">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+        <input class="button" type="submit" value="Добавить Руководителя дивизии">
+    </form>
+    <br>
+    <br>
+    <form method="POST" action="del/">
+        {% csrf_token %}
+        <label>Введите id: </label>
+        <input class = 'myfield' type= "number" name="delname" ><br>
+        <input class="button" type= "submit" value="Удалить Руководителя дивизии">
+    </form>
+    <br>
+    <br>
+    <form method="POST" action="up/">
+        {% csrf_token %}
+        <label>Введите id: </label>
+        <input class = 'myfield' type= "number" name="upname"><br>
+        <table>
+            {{ form }}
+        </table>
+        <input class="button" type= "submit" value="Изменить Руководителя дивизии">
+    </form>
+    </table>
+    <th align="center" width="50%">
+        <h1 align="center"> Список Руководителей дивизии</h1>
+    <table align="center">
+    <tr>
+
+    <form method="POST" action="show/">
+        {% csrf_token %}
+        <table class='table'>
+            <tr align="center" bgcolor="#FF4500">
+                <th>Id</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Отчество</th>
+                <th>Должность</th>
+                <th>номер девизии</th>
+
+
+            </tr>
+        {% for i in data_show %}
+            <tr align="center">
+                <td>{{ i.id }}</td>
+                <td>{{ i.last_name}}</td>
+                <td>{{ i.first_name}}</td>
+                <td>{{ i.patronymic}}</td>
+                <td>{{ i.position}}</td>
+                <td> <a href="{% url 'division' %}"> {{ i.division_number}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </form>
+        </th>
+    </tr>
+</table>
+
+</body>
+</html>
