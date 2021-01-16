@@ -5,7 +5,7 @@ from .models import Head_of_division, division, member_of_the_division, material
 
 @admin.register(Head_of_division)
 class Head_of_divisionAdmin(admin.ModelAdmin):
-    list_display = ('last_name','first_name','patronymic','position','division_number')
+    list_display = ('last_name','first_name','patronymic','position','id_member_of_the_division','division_number')
 
 @admin.register(division)
 class divisionAdmin(admin.ModelAdmin):

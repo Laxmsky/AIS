@@ -5,6 +5,7 @@ class Head_of_division(models.Model):
     first_name = models.CharField(max_length=45)
     patronymic = models.CharField(max_length=45)
     position = models.CharField(max_length=45)
+    id_member_of_the_division = models.ForeignKey('member_of_the_division', on_delete=models.CASCADE, null=True)
     division_number = models.ForeignKey('division', on_delete=models.CASCADE, null=True)
     objects = models.Manager()
 

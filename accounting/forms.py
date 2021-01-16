@@ -5,6 +5,7 @@ class AddHead_of_division(forms.Form):
     first_name = forms.CharField(label="Фамилия")
     patronymic = forms.CharField(label="Отчество")
     position = forms.CharField(label="Должность")
+    id_member_of_the_division = forms.CharField(label="id члена дивизии")
     division_number = forms.CharField(label="номер девизии")
 
 class Adddivision(forms.Form):

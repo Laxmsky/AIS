@@ -86,6 +86,7 @@
                 <th>Фамилия</th>
                 <th>Отчество</th>
                 <th>Должность</th>
+				<th>id члена дивизии</th>
                 <th>номер девизии</th>
 
 
@@ -97,6 +98,7 @@
                 <td>{{ i.first_name}}</td>
                 <td>{{ i.patronymic}}</td>
                 <td>{{ i.position}}</td>
+				<td> <a href="{% url 'member_of_the_division' %}"> {{ i.id_member_of_the_division}}</td>
                 <td> <a href="{% url 'division' %}"> {{ i.division_number}}</td>
             </tr>
         {% endfor %}
