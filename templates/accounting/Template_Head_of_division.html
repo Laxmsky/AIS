@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8" />
-    <title>Руководители дивизий</title>
+    <title>Руководители Подразделения</title>
     <style>
         .button {
 			background-color: #FF4500;
@@ -38,7 +38,7 @@
 <body class="container">
     <div id="header" >
 
-        <h1 align="center">Руководители дивизий</h1>
+        <h1 align="center">Руководители Подразделения</h1>
         <h3 align="center"><a href = "{% url 'home' %}"><button class = 'button'>назад</button></a></h3>
     </div>
 
@@ -50,7 +50,7 @@
         <table>
             {{ form }}
         </table>
-        <input class="button" type="submit" value="Добавить Руководителя дивизии">
+        <input class="button" type="submit" value="Добавить Руководителя Подразделения">
     </form>
     <br>
     <br>
@@ -58,7 +58,7 @@
         {% csrf_token %}
         <label>Введите id: </label>
         <input class = 'myfield' type= "number" name="delname" ><br>
-        <input class="button" type= "submit" value="Удалить Руководителя дивизии">
+        <input class="button" type= "submit" value="Удалить Руководителя Подразделения">
     </form>
     <br>
     <br>
@@ -69,11 +69,11 @@
         <table>
             {{ form }}
         </table>
-        <input class="button" type= "submit" value="Изменить Руководителя дивизии">
+        <input class="button" type= "submit" value="Изменить Руководителя Подразделения">
     </form>
     </table>
     <th align="center" width="50%">
-        <h1 align="center"> Список Руководителей дивизии</h1>
+        <h1 align="center"> Список Руководителей Подразделений</h1>
     <table align="center">
     <tr>
 
@@ -86,8 +86,8 @@
                 <th>Фамилия</th>
                 <th>Отчество</th>
                 <th>Должность</th>
-				<th>id члена дивизии</th>
-                <th>номер девизии</th>
+				<th>id члена Подразделения</th>
+                <th>номер Подразделения</th>
 
 
             </tr>

@@ -1,6 +1,7 @@
 from django.db import models
 
 class Head_of_division(models.Model):
+    id = models.IntegerField(primary_key=True)
     last_name = models.CharField(max_length=45)
     first_name = models.CharField(max_length=45)
     patronymic = models.CharField(max_length=45)
@@ -10,11 +11,13 @@ class Head_of_division(models.Model):
     objects = models.Manager()
 
 class division(models.Model):
+    id = models.IntegerField(primary_key=True)
     full_name = models.CharField(max_length=45)
     abbreviated_name = models.CharField(max_length=45)
     objects = models.Manager()
 
 class member_of_the_division(models.Model):
+    id = models.IntegerField(primary_key=True)
     last_name = models.CharField(max_length=45)
     first_name = models.CharField(max_length=45)
     patronymic = models.CharField(max_length=45)
@@ -23,6 +26,7 @@ class member_of_the_division(models.Model):
     objects = models.Manager()
 
 class materially_responsible_person(models.Model):
+    id = models.IntegerField(primary_key=True)
     last_name = models.CharField(max_length=45)
     first_name = models.CharField(max_length=45)
     patronymic = models.CharField(max_length=45)
@@ -32,6 +36,7 @@ class materially_responsible_person(models.Model):
     objects = models.Manager()
 
 class transfer_form(models.Model):
+    id = models.IntegerField(primary_key=True)
     date_of_transfer = models.CharField(max_length=45)
     number_of_the_room = models.CharField(max_length=45)
     mater = models.ForeignKey('materially_responsible_person', on_delete=models.CASCADE, null=True)
@@ -39,9 +44,12 @@ class transfer_form(models.Model):
     objects = models.Manager()
 
 class equipment(models.Model):
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=45)
     acquisition_date = models.CharField(max_length=45)
     cost = models.CharField(max_length=45)
+    number_of_the_room = models.CharField(max_length=45)
+    mater = models.ForeignKey('materially_responsible_person', on_delete=models.CASCADE, null=True)
     objects = models.Manager()
 
 

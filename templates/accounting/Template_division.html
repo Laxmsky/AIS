@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Двизии</title>
+    <title>Подразделения</title>
     <style>
         
         .button {
@@ -39,7 +39,7 @@
 </head>
 <body class="container">
     <div id="header" >
-        <h1 align="center">Дивизии</h1>
+        <h1 align="center">Подразделения</h1>
         <h3 align="center"><a href = "{% url 'home' %}"><button class = 'button'>назад</button></a></h3>
     </div>
 
@@ -51,30 +51,30 @@
         <table>
             {{ form }}
         </table>
-        <input class="button" type="submit" value="Добавить дивизию">
+        <input class="button" type="submit" value="Добавить Подразделение">
     </form>
     <br>
     <br>
     <form method="POST" action="delb/">
         {% csrf_token %}
-        <label> id: </label>
+        <label> Номер Подразделения: </label>
         <input class = 'myfield' type= "number" name="delname" ><br>
-        <input class="button" type= "submit" value="Удалить дивизию">
+        <input class="button" type= "submit" value="Удалить Подразделение">
     </form>
     <br>
     <br>
     <form method="POST" action="upb/">
         {% csrf_token %}
-        <label> id: </label>
+        <label> Номер Подразделения: </label>
         <input class = 'myfield' type= "number" name="upname"><br>
         <table>
             {{ form }}
         </table>
-        <input class="button" type= "submit" value="Изменить дивизию">
+        <input class="button" type= "submit" value="Изменить Подразделение">
     </form>
     </table>
     <th align="center" width="50%">
-        <h1 align="center"> Список дивизий</h1>
+        <h1 align="center"> Список Подразделений</h1>
     <table>
     <tr>
 
@@ -82,7 +82,7 @@
         {% csrf_token %}
         <table class='table'>
             <tr align="center" bgcolor="#FF4500">
-                <th>Id</th>
+                <th>Номер Подразделения</th>
                 <th>Полное название</th>
                 <th>Краткое название</th>
             </tr>

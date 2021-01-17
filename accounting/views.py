@@ -56,6 +56,7 @@ class view_Head_of_division(View):
     def add_Head_of_division(request):
         if request.method == "POST":
             head = Head_of_division()
+            head.id = request.POST.get("id")
             head.last_name = request.POST.get("last_name")
             head.first_name = request.POST.get("first_name")
             head.patronymic = request.POST.get("patronymic")
@@ -76,6 +77,8 @@ class view_Head_of_division(View):
         if request.method == "POST":
             q = request.POST.get("upname", "")
             que = Head_of_division.objects.get(id=q)
+            que.delete()
+            que.id = request.POST.get("id")
             que.last_name = request.POST.get("last_name")
             que.first_name = request.POST.get("first_name")
             que.patronymic = request.POST.get("patronymic")
@@ -89,6 +92,7 @@ class view_division(View):
     def add_division(request):
         if request.method == "POST":
             divis = division()
+            divis.id = request.POST.get("id")
             divis.full_name = request.POST.get("full_name")
             divis.abbreviated_name = request.POST.get("abbreviated_name")
             divis.save()
@@ -105,6 +109,8 @@ class view_division(View):
         if request.method == "POST":
             q = request.POST.get("upname", "")
             que = division.objects.get(id=q)
+            que.delete()
+            que.id = request.POST.get("id")
             que.full_name = request.POST.get("full_name")
             que.abbreviated_name = request.POST.get("abbreviated_name")
             que.save()
@@ -114,6 +120,7 @@ class view_member_of_the_division(View):
     def add_member_of_the_division(request):
         if request.method == "POST":
             member = member_of_the_division()
+            member.id = request.POST.get("id")
             member.last_name = request.POST.get("last_name")
             member.first_name = request.POST.get("first_name")
             member.patronymic = request.POST.get("patronymic")
@@ -133,6 +140,8 @@ class view_member_of_the_division(View):
         if request.method == "POST":
             q = request.POST.get("upname", "")
             que = member_of_the_division.objects.get(id=q)
+            que.delete()
+            que.id = request.POST.get("id")
             que.last_name = request.POST.get("last_name")
             que.first_name = request.POST.get("first_name")
             que.patronymic = request.POST.get("patronymic")
@@ -145,6 +154,7 @@ class view_materially_responsible_person(View):
     def add_materially_responsible_person(request):
         if request.method == "POST":
             materially = materially_responsible_person()
+            materially.id = request.POST.get("id")
             materially.last_name = request.POST.get("last_name")
             materially.first_name = request.POST.get("first_name")
             materially.patronymic = request.POST.get("patronymic")
@@ -165,6 +175,8 @@ class view_materially_responsible_person(View):
         if request.method == "POST":
             q = request.POST.get("upname", "")
             que = materially_responsible_person.objects.get(id=q)
+            que.delete()
+            que.id = request.POST.get("id")
             que.last_name = request.POST.get("last_name")
             que.first_name = request.POST.get("first_name")
             que.patronymic = request.POST.get("patronymic")
@@ -179,6 +191,7 @@ class view_transfer_form(View):
     def add_transfer_form(request):
         if request.method == "POST":
             transfer = transfer_form()
+            transfer.id = request.POST.get("id")
             transfer.date_of_transfer = request.POST.get("date_of_transfer")
             transfer.number_of_the_room = request.POST.get("number_of_the_room")
             transfer.mater = materially_responsible_person.objects.get(id=request.POST.get("mater"))
@@ -197,6 +210,8 @@ class view_transfer_form(View):
         if request.method == "POST":
             q = request.POST.get("upname", "")
             que = transfer_form.objects.get(id=q)
+            que.delete()
+            que.id = request.POST.get("id")
             que.date_of_transfer = request.POST.get("date_of_transfer")
             que.number_of_the_room = request.POST.get("number_of_the_room")
             que.mater = materially_responsible_person.objects.get(id=request.POST.get("mater"))
@@ -208,9 +223,12 @@ class view_equipment(View):
     def add_equipment(request):
         if request.method == "POST":
             equ = equipment()
+            equ.id = request.POST.get("id")
             equ.name = request.POST.get("name")
             equ.acquisition_date = request.POST.get("acquisition_date")
             equ.cost = request.POST.get("cost")
+            equ.number_of_the_room = request.POST.get("number_of_the_room")
+            equ.mater = materially_responsible_person.objects.get(id=request.POST.get("mater"))
             equ.save()
             return HttpResponseRedirect("/equipment")
 
@@ -225,9 +243,13 @@ class view_equipment(View):
         if request.method == "POST":
             q = request.POST.get("upname", "")
             que = equipment.objects.get(id=q)
+            que.delete()
+            que.id = request.POST.get("id")
             que.name = request.POST.get("name")
             que.acquisition_date = request.POST.get("acquisition_date")
             que.cost = request.POST.get("cost")
+            que.number_of_the_room = request.POST.get("number_of_the_room")
+            que.mater = materially_responsible_person.objects.get(id=request.POST.get("mater"))
             que.save()
             return HttpResponseRedirect("/equipment")
 

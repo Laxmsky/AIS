@@ -55,7 +55,7 @@
     <br>
     <form method="POST" action="dele/">
         {% csrf_token %}
-        <label>id</label>
+        <label>Инвентарный номер:</label>
         <input class = "myfield" type= "number" name="delname"><br>
         <input class = "button" type= "submit" value="Удалить Оборудование">
     </form>
@@ -63,7 +63,7 @@
     <br>
     <form method="POST" action="upe/">
         {% csrf_token %}
-        <label>id</label>
+        <label>Инвентарный номер:</label>
         <input class="myfield" type= "number" name="upname"><br>
         <table>
             {{ form }}
@@ -80,10 +80,12 @@
         {% csrf_token %}
         <table class='table'>
             <tr align="center" bgcolor="#FF4500">
-                <th>Id</th>
+                <th>Инвентарный номер</th>
                 <th>Название</th>
                 <th>Дата приобретения</th>
 				<th>Цена</th>
+				<th>Номер комнаты</th>
+                <th>id Материально ответственного лица</th>
             </tr>
         {% for i in data_show %}
             <tr align="center">
@@ -91,6 +93,8 @@
                 <td>{{ i.name }}</td>
                 <td>{{ i.acquisition_date }}</td>
 				<td>{{ i.cost }}</td>
+				<td>{{ i.number_of_the_room }}</td>
+                <td> <a href="{% url 'materially_responsible_person' %}"> {{ i.mater}} </td>
             </tr>
         {% endfor %}
         </table>
