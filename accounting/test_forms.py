@@ -147,7 +147,7 @@ class AddequipmentFormTest(TestCase):
         self.assertTrue(form.fields['mater'].label == None or form.fields['mater'].label == 'id Материально ответственного лица')
 
     def test_proverka(self):
-        form = Addequipment(data={'id': 1, 'name': "Принтер", 'acquisition_date': "10.05.2019",'cost': "1500 руб", 'number_of_the_room': 12, 'mater': 1})
+        form = Addequipment(data={'id': 1, 'name': "Принтер", 'acquisition_date': "10.05.2019",'cost': "1500 руб", 'number_of_the_room': 12, 'mater': '1'})
         self.assertTrue(form.is_valid())
 
 class Addtransfer_formFormTest(TestCase):

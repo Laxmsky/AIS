@@ -187,6 +187,37 @@ class view_materially_responsible_person(View):
             que.save()
             return HttpResponseRedirect("/materially_responsible_person")
 
+    def add_transfer_form(request):
+        if request.method == "POST":
+            transfer = transfer_form()
+            transfer.id = request.POST.get("id")
+            transfer.date_of_transfer = request.POST.get("date_of_transfer")
+            transfer.number_of_the_room = request.POST.get("number_of_the_room")
+            transfer.mater = materially_responsible_person.objects.get(id=request.POST.get("mater"))
+            transfer.inventory_number = equipment.objects.get(id=request.POST.get("inventory_number"))
+            transfer.save()
+            return HttpResponseRedirect("/transfer_form")
+
+    def del_transfer_form(request):
+        if request.method == "POST":
+            q = request.POST.get("delname", "")
+            que = transfer_form.objects.get(id=q)
+            que.delete()
+            return HttpResponseRedirect("/transfer_form")
+
+    def update_transfer_form(request):
+        if request.method == "POST":
+            q = request.POST.get("upname", "")
+            que = transfer_form.objects.get(id=q)
+            que.delete()
+            que.id = request.POST.get("id")
+            que.date_of_transfer = request.POST.get("date_of_transfer")
+            que.number_of_the_room = request.POST.get("number_of_the_room")
+            que.mater = materially_responsible_person.objects.get(id=request.POST.get("mater"))
+            que.inventory_number = equipment.objects.get(id=request.POST.get("inventory_number"))
+            que.save()
+            return HttpResponseRedirect("/transfer_form")
+
 class view_transfer_form(View):
     def add_transfer_form(request):
         if request.method == "POST":

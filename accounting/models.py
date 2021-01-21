@@ -1,15 +1,5 @@
 from django.db import models
 
-class Head_of_division(models.Model):
-    id = models.IntegerField(primary_key=True)
-    last_name = models.CharField(max_length=45)
-    first_name = models.CharField(max_length=45)
-    patronymic = models.CharField(max_length=45)
-    position = models.CharField(max_length=45)
-    id_member_of_the_division = models.ForeignKey('member_of_the_division', on_delete=models.CASCADE, null=True)
-    division_number = models.ForeignKey('division', on_delete=models.CASCADE, null=True)
-    objects = models.Manager()
-
 class division(models.Model):
     id = models.IntegerField(primary_key=True)
     full_name = models.CharField(max_length=45)
@@ -25,14 +15,12 @@ class member_of_the_division(models.Model):
     division_number = models.ForeignKey('division', on_delete=models.CASCADE, null=True)
     objects = models.Manager()
 
-class materially_responsible_person(models.Model):
-    id = models.IntegerField(primary_key=True)
-    last_name = models.CharField(max_length=45)
-    first_name = models.CharField(max_length=45)
-    patronymic = models.CharField(max_length=45)
-    position = models.CharField(max_length=45)
-    id_member_of_the_division = models.ForeignKey('member_of_the_division', on_delete=models.CASCADE,  null=True)
-    division_number = models.ForeignKey('division', on_delete=models.CASCADE, null=True)
+class Head_of_division(member_of_the_division):
+    id_member_of_the_division = models.ForeignKey('member_of_the_division', on_delete=models.CASCADE,related_name='membe_id', null=True)
+    objects = models.Manager()
+
+class materially_responsible_person(member_of_the_division):
+    id_member_of_the_division = models.ForeignKey('member_of_the_division', on_delete=models.CASCADE, related_name='member_id', null=True)
     objects = models.Manager()
 
 class transfer_form(models.Model):

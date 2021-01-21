@@ -41,7 +41,7 @@ class member_of_the_divisionlModelTest(TestCase):
     def setUpTestData(cls):
         #Set up non-modified objects used by all test methods
         member_of_the_division.objects.create(id = 1, last_name = "Суботин", first_name = "Вениамин",
-                                              patronymic = "Касьянович", position = "Начальник",)
+                                              patronymic = "Касьянович", position = "Начальник")
 
     def test_id_label(self):
         member=member_of_the_division.objects.get(id=1)
